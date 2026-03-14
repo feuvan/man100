@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
@@ -32,7 +32,7 @@
                 </div>
                 <button id="start-btn" class="game-btn">开始挑战</button>
                 <p class="best-score-display">最高纪录: <span id="best-score-start">0</span> 层</p>
-                <p class="version-display">v2</p>
+                <p class="version-display">v3</p>
             </div>
         </div>
 
@@ -52,8 +52,14 @@
                 <button id="restart-btn" class="game-btn">再来一次</button>
             </div>
         </div>
+
+        <!-- 移动端虚拟方向键 -->
+        <div id="touch-controls">
+            <button id="touch-left" class="touch-btn" aria-label="向左">◀</button>
+            <button id="touch-right" class="touch-btn" aria-label="向右">▶</button>
+        </div>
     </div>
 
-    <script src="game.v2.js"></script>
+    <script src="game.v3.js"></script>
 </body>
 </html>

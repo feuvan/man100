@@ -8,12 +8,16 @@
     box-sizing: border-box;
 }
 
+html, body {
+    height: 100%;
+    height: 100dvh;
+}
+
 body {
     background: #0a0a1a;
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
     overflow: hidden;
     font-family: 'Press Start 2P', monospace;
 }
@@ -23,21 +27,34 @@ body {
     position: relative;
     width: 400px;
     height: 600px;
+    overflow: hidden;
+    background: #0d0d2b;
     border: 3px solid #333;
     border-radius: 8px;
-    overflow: hidden;
     box-shadow:
         0 0 30px rgba(0, 255, 136, 0.15),
         0 0 60px rgba(0, 255, 136, 0.05),
         inset 0 0 30px rgba(0, 0, 0, 0.5);
+    transform-origin: center center;
 }
 
 #gameCanvas {
     display: block;
-    width: 400px;
-    height: 600px;
-    background: #0d0d2b;
+    width: 100%;
+    height: 100%;
     image-rendering: pixelated;
+}
+
+/* Mobile: game-wrapper fills entire viewport */
+@media (hover: none) and (pointer: coarse), (max-width: 600px) {
+    #game-wrapper {
+        width: 100%;
+        height: 100%;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
+        transform: none !important;
+    }
 }
 
 /* ---- Overlays ---- */
@@ -229,10 +246,56 @@ body {
     to { transform: translateY(-6px); }
 }
 
-/* ---- Responsive Scaling ----
-   game-wrapper stays 400x600, JS applies transform:scale() to fit viewport.
-   transform-origin is top-left; body centers via flexbox.
-*/
-#game-wrapper {
-    transform-origin: center center;
+/* ---- Touch Controls (inside game-wrapper, absolute positioned) ---- */
+#touch-controls {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 20;
+    padding: 20px 24px;
+    padding-bottom: calc(20px + env(safe-area-inset-bottom, 0px));
+    justify-content: space-between;
+    pointer-events: none;
+}
+
+.touch-btn {
+    pointer-events: auto;
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(255, 255, 255, 0.08);
+    color: rgba(255, 255, 255, 0.25);
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    transition: background 0.15s, color 0.15s;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+}
+
+.touch-btn:active,
+.touch-btn.pressed {
+    background: rgba(255, 255, 255, 0.18);
+    color: rgba(255, 255, 255, 0.5);
+}
+
+/* Show touch controls on touch devices or small screens */
+@media (hover: none) and (pointer: coarse) {
+    #touch-controls {
+        display: flex;
+    }
+}
+
+@media (max-width: 600px) {
+    #touch-controls {
+        display: flex;
+    }
 }

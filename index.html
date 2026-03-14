@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>是男人就下100层</title>
+    <meta name="description" content="经典游戏「是男人就下100层」HTML5 复刻版。用方向键控制角色不断下落，躲避尖刺，挑战最深层数！">
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="game-wrapper">
+        <canvas id="gameCanvas"></canvas>
+
+        <!-- 开始画面 -->
+        <div id="start-screen" class="overlay">
+            <div class="overlay-content">
+                <h1 class="game-title">是男人就下<span class="highlight">100</span>层</h1>
+                <p class="subtitle">MANLY MAN DESCENDS</p>
+                <div class="controls-hint">
+                    <p>← → 或 A/D 移动</p>
+                    <p>踩平台往下跳！</p>
+                </div>
+                <div class="platform-legend">
+                    <span class="legend-item"><span class="legend-color green"></span>安全</span>
+                    <span class="legend-item"><span class="legend-color blue"></span>移动</span>
+                    <span class="legend-item"><span class="legend-color yellow"></span>易碎</span>
+                    <span class="legend-item"><span class="legend-color red"></span>尖刺</span>
+                </div>
+                <button id="start-btn" class="game-btn">开始挑战</button>
+                <p class="best-score-display">最高纪录: <span id="best-score-start">0</span> 层</p>
+                <p class="version-display">v2</p>
+            </div>
+        </div>
+
+        <!-- 游戏结束画面 -->
+        <div id="gameover-screen" class="overlay hidden">
+            <div class="overlay-content">
+                <h1 class="gameover-title">GAME OVER</h1>
+                <div class="score-display">
+                    <p>本次到达</p>
+                    <p class="final-score"><span id="final-score">0</span> 层</p>
+                </div>
+                <div class="score-display">
+                    <p>最高纪录</p>
+                    <p class="best-score"><span id="best-score-end">0</span> 层</p>
+                </div>
+                <p id="new-record" class="new-record hidden">🎉 新纪录！</p>
+                <button id="restart-btn" class="game-btn">再来一次</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="game.v2.js"></script>
+</body>
+</html>

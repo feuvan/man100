@@ -1,0 +1,253 @@
+/* ============================================
+   是男人就下100层 — 样式
+   ============================================ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #0a0a1a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden;
+    font-family: 'Press Start 2P', monospace;
+}
+
+/* ---- Game Wrapper ---- */
+#game-wrapper {
+    position: relative;
+    width: 400px;
+    height: 600px;
+    border: 3px solid #333;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow:
+        0 0 30px rgba(0, 255, 136, 0.15),
+        0 0 60px rgba(0, 255, 136, 0.05),
+        inset 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+#gameCanvas {
+    display: block;
+    width: 400px;
+    height: 600px;
+    background: #0d0d2b;
+    image-rendering: pixelated;
+}
+
+/* ---- Overlays ---- */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(5, 5, 20, 0.92);
+    backdrop-filter: blur(4px);
+    z-index: 10;
+    animation: fadeIn 0.3s ease;
+}
+
+.overlay.hidden {
+    display: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.overlay-content {
+    text-align: center;
+    color: #e0e0e0;
+    padding: 20px;
+}
+
+/* ---- Title ---- */
+.game-title {
+    font-size: 20px;
+    line-height: 1.8;
+    color: #fff;
+    text-shadow:
+        0 0 10px rgba(0, 255, 136, 0.6),
+        0 0 30px rgba(0, 255, 136, 0.3);
+    margin-bottom: 8px;
+}
+
+.game-title .highlight {
+    color: #00ff88;
+    font-size: 28px;
+}
+
+.subtitle {
+    font-size: 8px;
+    color: #666;
+    letter-spacing: 4px;
+    margin-bottom: 30px;
+}
+
+/* ---- Controls Hint ---- */
+.controls-hint {
+    font-size: 9px;
+    color: #aaa;
+    line-height: 2.2;
+    margin-bottom: 20px;
+}
+
+/* ---- Platform Legend ---- */
+.platform-legend {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 8px;
+    color: #999;
+}
+
+.legend-color {
+    width: 14px;
+    height: 6px;
+    border-radius: 2px;
+    display: inline-block;
+}
+
+.legend-color.green { background: #00cc66; }
+.legend-color.blue { background: #3399ff; }
+.legend-color.yellow { background: #ffcc00; }
+.legend-color.red { background: #ff3344; }
+
+/* ---- Buttons ---- */
+.game-btn {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 12px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, #00cc66, #00aa55);
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow:
+        0 4px 0 #008844,
+        0 6px 20px rgba(0, 204, 102, 0.3);
+    position: relative;
+    top: 0;
+}
+
+.game-btn:hover {
+    background: linear-gradient(135deg, #00dd77, #00bb66);
+    box-shadow:
+        0 4px 0 #008844,
+        0 6px 30px rgba(0, 204, 102, 0.5);
+}
+
+.game-btn:active {
+    top: 3px;
+    box-shadow:
+        0 1px 0 #008844,
+        0 2px 10px rgba(0, 204, 102, 0.3);
+}
+
+/* ---- Score Displays ---- */
+.best-score-display {
+    font-size: 8px;
+    color: #666;
+    margin-top: 20px;
+}
+
+.version-display {
+    font-size: 7px;
+    color: #333;
+    margin-top: 12px;
+    letter-spacing: 2px;
+}
+
+.gameover-title {
+    font-size: 24px;
+    color: #ff3344;
+    text-shadow:
+        0 0 10px rgba(255, 51, 68, 0.6),
+        0 0 30px rgba(255, 51, 68, 0.3);
+    margin-bottom: 30px;
+    animation: pulse 1.5s ease infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+.score-display {
+    margin-bottom: 16px;
+}
+
+.score-display p {
+    font-size: 9px;
+    color: #888;
+    margin-bottom: 4px;
+}
+
+.final-score {
+    font-size: 28px !important;
+    color: #00ff88 !important;
+    text-shadow: 0 0 15px rgba(0, 255, 136, 0.5);
+}
+
+.best-score {
+    font-size: 16px !important;
+    color: #ffcc00 !important;
+}
+
+.new-record {
+    font-size: 12px;
+    color: #ffcc00;
+    margin-bottom: 20px;
+    animation: bounce 0.6s ease infinite alternate;
+}
+
+.new-record.hidden {
+    display: none;
+}
+
+@keyframes bounce {
+    from { transform: translateY(0); }
+    to { transform: translateY(-6px); }
+}
+
+/* ---- Responsive ---- */
+@media (max-height: 650px) {
+    #game-wrapper {
+        height: 500px;
+    }
+    #gameCanvas {
+        height: 500px;
+    }
+}
+
+@media (max-width: 420px) {
+    #game-wrapper {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+        border-radius: 0;
+    }
+    #gameCanvas {
+        width: 100vw;
+        height: 100vh;
+    }
+}

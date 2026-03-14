@@ -683,4 +683,18 @@
         ctx.closePath();
     }
 
+    // ---- Responsive Scaling ----
+    const wrapper = document.getElementById('game-wrapper');
+    function resizeGame() {
+        const padding = 16;
+        const maxW = window.innerWidth - padding * 2;
+        const maxH = window.innerHeight - padding * 2;
+        const scaleX = maxW / W;
+        const scaleY = maxH / H;
+        const scale = Math.min(scaleX, scaleY);
+        wrapper.style.transform = `scale(${scale})`;
+    }
+    window.addEventListener('resize', resizeGame);
+    resizeGame();
+
 })();

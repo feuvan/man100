@@ -229,25 +229,10 @@ body {
     to { transform: translateY(-6px); }
 }
 
-/* ---- Responsive ---- */
-@media (max-height: 650px) {
-    #game-wrapper {
-        height: 500px;
-    }
-    #gameCanvas {
-        height: 500px;
-    }
-}
-
-@media (max-width: 420px) {
-    #game-wrapper {
-        width: 100vw;
-        height: 100vh;
-        border: none;
-        border-radius: 0;
-    }
-    #gameCanvas {
-        width: 100vw;
-        height: 100vh;
-    }
+/* ---- Responsive Scaling ----
+   game-wrapper stays 400x600, JS applies transform:scale() to fit viewport.
+   transform-origin is top-left; body centers via flexbox.
+*/
+#game-wrapper {
+    transform-origin: center center;
 }
